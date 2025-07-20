@@ -19,6 +19,7 @@ button, summary {
 :root {
 	--color-dark:#1C3434;	
 	--color-neonMint:#79FB97;	
+  --color-neonMintHover: #5ed67e;
 	--Color-paleClay:#EEE5DF;
 	--Color-ivoryDust:#F4F1EA;
 	--color-white:#FFFFFF;
@@ -73,12 +74,10 @@ button, summary {
 body {
 	font-family: 'Hind', sans-serif;
 	font-weight: 400;
-	/* max-width: 1440px; */
 	color: var(--color-dark);
 	background-color: var(--Color-ivoryDust, #F4F1EA);
-	line-height: 1.6;
 	margin: 0 auto;
-	/* padding: 0 1.5rem; */
+  overflow-x: hidden;
 }
 
 a {
@@ -94,32 +93,45 @@ a:hover {
 
 
 
+
 /****************/
-/*    HEADER    */
+/*     NAV      */
 /****************/
-body nav {
-	position: sticky;
-	top: 0;
-	z-index: 1000;
-
-	display: flex;
-	padding: 12px 0;
-	justify-content: space-between;
-	align-items: center;
-
-	border-bottom: 2px solid var(--Color-paleClay, #EEE5DF);
-	background: var(--Color-ivoryDust, #F4F1EA);
+header {
+    background-color: var(--Color-ivoryDust); 
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--Color-paleClay);
 }
 
-nav img {
-  height: 40px;
+/* Nav: gecentreerd, gelimiteerd in breedte */
+header nav {
+    max-width: 90em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
+/* Horizontale uitlijning van nav-links */
+header nav ul {
+    display: flex;
+    gap: 4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+/* Optioneel: styling van de links */
+header nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--color-dark);
+}
+
 
 
 
@@ -127,42 +139,83 @@ nav ul {
 /****************/
 /*     HERO     */
 /****************/
-header section {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem 0;
+main section:nth-of-type(1) {
+    display: flex;
+    flex-direction: row; 
+    gap: 2rem;
+    padding: 2rem 0;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+    padding: 3rem 2rem;
 }
 
-header section > div {
-  max-width: 718px;
+/* Container binnen section */
+main section:nth-of-type(1) > .container {
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 100%;          /* voor volledige breedte */
+
+    max-width: 90em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header h1 {
-  color: var(--Color-deepPine, #1C3434);
-font-family: Hind;
-font-size: 52px;
-font-style: normal;
-font-weight: 700;
-line-height: 116%; /* 60.32px */
+/* Content div binnen container */
+main section:nth-of-type(1) > .container > div:nth-of-type(1) {
+    max-width: 50em;
 }
 
-header p {
-  margin-bottom: 1.5rem;
+/* H1 binnen die div */
+main section:nth-of-type(1) > .container > div:nth-of-type(1) h1 {
+    color: var(--Color-deepPine);
+    font-family: Hind;
+    font-size: 3.3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 116%; 
+    margin-bottom: .5em;
 }
 
-header img {
-  max-width: 300px;
-  border-radius: 1rem;
+/* De img is nu ook kind van container */
+main section:nth-of-type(1) > .container > img {
+    max-width: 19em;
+    border-radius: 1.8rem;
 }
 
-
+/* Tekst onderstrepen in de H1 */
 .onderstreept-detail {
-  background-image: linear-gradient(var(--color-neonMint), var(--color-neonMint));
-  background-repeat: no-repeat;
-  background-size: 100% 8px; /* breedte x dikte van de underline */
-  background-position: 0 70%; /* horizontaal 0, verticaal positie (bijv. onder tekst) */
+    background-image: linear-gradient(var(--color-neonMint), var(--color-neonMint));
+    background-repeat: no-repeat;
+    background-size: 100% 8px; /* breedte x dikte van de underline */
+    background-position: 0 70%; /* horizontaal 0, verticaal positie */
 }
+
+.button {
+    display: inline-flex; /* ipv flex */
+    padding: 0.75em 1.5em;
+    margin-right: 1em;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625em;
+
+    border-radius: 9px;
+    background: var(--Color-neoMint, #79FB97);
+
+    text-decoration: none; /* als het een <a> is */
+    width: auto;           /* belangrijk: voorkomt 100% breedte */
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.button:hover {
+    text-decoration: none;
+    background-color: var(--color-neonMintHover);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 
 
 
@@ -170,165 +223,151 @@ header img {
 /****************/
 /*   PROJECTS   */
 /****************/
-main section:nth-of-type(1){
-	color: var(--color-white);
-	background-color: var(--color-dark);
+.projects {
+  width: 100%;
+  background-color: var(--color-dark);
+  padding: 3rem 0;
+  color: var(--color-white);
+  padding: 3rem 2rem;
 }
 
-#projects {
-  padding: 4rem 0 2rem;
+.projects > div {
+  max-width: 90em;
+  margin: 0 auto;
 }
 
-#projects h2 {
-  font-size: 1.8rem;
+.projects > div h2 {
+  font-size: 2.5rem;
   margin-bottom: 2rem;
 }
 
-#projects div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-#projects img {
-  width: 100%;
-  border-radius: 1rem;
-}
-
-/****************/
-/* OPEN TO WORK */
-/****************/
-
-
-.open-to-work {
-  overflow: hidden;
-  background-color: var(--Color-paleClay);
-  color: var(--color-dark);
-  padding: 0.75rem 0;
-  white-space: nowrap;
-}
-
-.open-to-work .scroll {
-  overflow: hidden;
-  width: 100%;
-}
-
-.open-to-work .scroll-track {
+/* Flex container van de links */
+.projects > div > div {
   display: flex;
-  width: max-content;
-  animation: scroll-text 30s linear infinite;
-}
-
-.open-to-work .scroll-track span {
-  display: inline-flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  padding: 0 1rem;
-}
-
-.open-to-work .dot {
-  color: var(--color-neonMint);
-  font-size: 2rem;
-  line-height: 1;
-  margin: 0 0.5rem;
-}
-
-/* De animatie */
-@keyframes scroll-text {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-
-
-/****************/
-/*     ABOUT    */
-/****************/
-#about {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
-  padding-bottom: 4rem;
+  justify-content: center;
+  max-width: 90em;
+  margin: 0 auto;
 }
 
-#about img {
-  max-width: 100%;
+/* De flex-items zijn nu de <a> */
+.projects > div > div a {
+  flex-shrink: 0;
   border-radius: 1rem;
+  overflow: hidden; /* Zorgt dat zoom niet buiten container gaat */
 }
 
-#about article h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+/* Breedtetoewijzing aan de <a> met nth-child */
+.projects > div > div a:nth-child(1) {
+  flex: 2 1 58%;
 }
 
-#about article a {
-  display: inline-block;
-  margin-right: 1rem;
-  margin-top: 1rem;
+.projects > div > div a:nth-child(2) {
+  flex: 1 1 37%;
 }
 
-/****************/
-/*    FOOTER    */
-/****************/
-footer {
-  background-color: var(--color-dark);
-  padding: 2rem 0;
-  color: var(--color-white);
+.projects > div > div a:nth-child(3) {
+  flex: 1 1 37%;
 }
 
-footer h2 {
-  font-size: 1.8rem;
+.projects > div > div a:nth-child(4) {
+  flex: 2 1 58%;
 }
 
-footer h2 strong{
-  color: var(--color-neonMint);
+/* Afbeelding vult altijd de hele link container */
+.projects > div > div a img {
+  width: 100%;
+  height: 25em;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: transform 0.4s ease;
+  display: block; /* Voorkomt whitespace onder de afbeelding */
+}
+
+/* Hover zoom op afbeelding */
+.projects > div > div a:hover img {
+  transform: scale(1.05);
 }
 
 
-footer p {
-  margin: 1rem 0;
-}
-
-footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-footer li {
-  margin-bottom: 0.5rem;
-}
-
-footer small {
-  display: block;
-  text-align: center;
-  margin-top: 2rem;
-}
 
 /****************/
 /*  RESPONSIVE  */
 /****************/
-@media (min-width: 768px) {
-  header section {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+@media (max-width: 768px) {
+
+  /* NAVIGATIE */
+  header {
+    padding: 1rem; /* minder padding zijkanten */
   }
 
-  #about {
-    flex-direction: row;
-    align-items: flex-start;
+  header nav {
+    max-width: 100%;   /* volle breedte gebruiken op mobiel */
+    margin: 0;         /* geen auto margin */
   }
 
-  #about article {
-    flex: 1;
+  header nav ul {
+    gap: 1rem;         /* minder ruimte tussen links */
   }
 
-  #about img {
-    max-width: 400px;
+ 
+  /* EERSTE SECTIE */
+  main section:nth-of-type(1) {
+    flex-direction: column;
+    padding: 1rem;          /* alle kanten 1rem padding */
+    gap: 1.5rem;
   }
+
+  main section:nth-of-type(1) > .container {
+    flex-direction: column;
+    max-width: 100%;        /* breedte voluit */
+    margin: 0;
+  }
+
+
+  main section:nth-of-type(1) > .container > div:nth-of-type(1) h1 {
+    font-size: 2.2rem;        /* kleiner lettertype voor mobiel */
+  }
+
+  main section:nth-of-type(1) > .container > img {
+    max-width: 100%;        /* afbeelding voluit in container */
+  }
+
+
+  /* TWEEDE SECTIE */
+  .projects > div h2 {
+    font-size: 1.8rem; /* kleiner dan desktop */
+  }
+
+   .projects > div > div {
+    gap: 1rem; /* minder ruimte tussen */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Eerste en vierde afbeelding: liggend, iets minder hoog en breder */
+  .projects > div > div a:nth-child(1),
+  .projects > div > div a:nth-child(4) {
+    flex: 2 1 60%;  /* breder */
+  }
+  .projects > div > div a:nth-child(1) img,
+  .projects > div > div a:nth-child(4) img {
+    height: 14em;  /* lager dan desktop */
+    width: 100%;   /* vult link container */
+  }
+
+  /* Tweede en derde afbeelding: staand, smaller en hoger */
+  .projects > div > div a:nth-child(2),
+  .projects > div > div a:nth-child(3) {
+    flex: 1 1 35%; /* smaller */
+  }
+  .projects > div > div a:nth-child(2) img,
+  .projects > div > div a:nth-child(3) img {
+    height: 12em; /* hoger */
+    width: 100%;  /* vult link container */
+  }
+  
+
+  
 }
