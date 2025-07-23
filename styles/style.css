@@ -80,6 +80,14 @@ body {
   overflow-x: hidden;
 }
 
+body.projects,
+body.about,
+body.contact{
+  margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 a {
 	color: var(--color-dark);
 	text-decoration: none;
@@ -488,6 +496,128 @@ footer small {
 }
 
 
+/*********************/
+/*********************/
+/*  APARTE PAGINA's  */
+/*********************/
+/****************/
+/*   PROJECTS   */
+/****************/
+body.projects{
+  background-color: var(--Color-ivoryDust);
+}
+
+body.projects .projects {
+  background-color: var(--Color-ivoryDust);
+  color: var(--color-dark);
+}
+
+
+
+
+/****************/
+/*   ABOUT   */
+/****************/
+
+
+.contactSection {
+  min-height: 70vh;
+  display: flex;
+  justify-content: space-between;     /* ruimte tussen blokken */
+  align-items: flex-start;            /* bovenzijde gelijk uitlijnen */
+  gap: 2rem;
+  max-width: 64em;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background-color: var(--Color-ivoryDust);
+  font-family: 'Hind', sans-serif;
+  color: var(--color-dark);
+  flex-wrap: nowrap;                  /* naast elkaar */
+}
+
+/* Het linkerblok */
+.contactSection > .contactLeft {
+  flex: 1 1 50%;
+  min-width: 31em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.contactSection > .contactLeft h2 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--color-dark);           /* behoudt oorspronkelijke kleur */
+}
+
+.contactSection > .contactLeft p {
+  margin: 0 0 1rem 0;
+  font-weight: 400;
+}
+
+.contactSection > .contactRight {
+  flex: 1 1 50%;
+  min-width: 31em;
+  background-color: var(--color-dark);
+  padding: 2rem;
+  border-radius: 1.8rem;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.contactSection > .contactRight h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-white);          /* expliciet wit */
+}
+
+.contactSection > .contactRight ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.contactSection > .contactRight li {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.contactSection > .contactRight ul li a {
+  color: var(--color-white);
+  font-weight: normal;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.contactSection > .contactRight ul li a .icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  margin-right: 0.5em;
+}
+
+.contactSection > .contactRight ul li a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
 /****************/
 /*  RESPONSIVE  */
 /****************/
@@ -663,5 +793,59 @@ footer small {
   footer small {
     margin-top: 2rem;
     font-size: 0.8rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* CONTACT - PAGINA */
+  .contactSection {
+    flex-direction: column;      /* blokken onder elkaar */
+    align-items: flex-start;     /* links uitlijnen */
+    padding: 0;          /* iets minder padding */
+    gap: 1.5rem;                 /* iets minder ruimte tussen blokken */
+    min-height: auto;            /* geen vaste hoogte op mobiel */
+  }
+
+  .contactSection > .contactLeft,
+  .contactSection > .contactRight {
+    flex: none;                  /* vaste breedte */
+    width: 100%;                 /* volle breedte nemen */
+    min-width: auto;             /* min-width resetten */
+    text-align: left;            /* tekst links uitlijnen */
+  }
+
+  .contactSection > .contactLeft h2 {
+    font-size: 1.8rem;           /* iets kleiner dan desktop */
+    margin-bottom: 0.5rem;
+  }
+
+  .contactSection > .contactLeft p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .contactSection > .contactRight {
+    padding: 2rem 2rem;
+    margin-bottom: 3em;
+    border-radius: 1rem;         /* iets minder afgerond */
+  }
+
+  .contactSection > .contactRight h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .contactSection > .contactRight ul li a {
+    font-size: 1rem;
   }
 }
