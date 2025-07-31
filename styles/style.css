@@ -80,9 +80,9 @@ body {
   overflow-x: hidden;
 }
 
-body.projects,
-body.about,
-body.contact{
+body.projects-page,
+body.about-page,
+body.contact-page{
   margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -142,33 +142,33 @@ header {
 }
 
 /* Nav: gecentreerd, gelimiteerd in breedte */
-header nav {
-    max-width: 90em;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.main-nav {
+  max-width: 90em;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header nav img {
+.main-nav img {
   height: 2.4rem;
   width: auto;
 }
 
 /* Horizontale uitlijning van nav-links */
-header nav ul {
-    display: flex;
-    gap: 4rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.main-nav ul {
+  display: flex;
+  gap: 4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Optioneel: styling van de links */
-header nav a {
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--color-dark);
+.main-nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--color-dark);
 }
 
 
@@ -178,11 +178,10 @@ header nav a {
 /****************/
 /*     HERO     */
 /****************/
-main section:nth-of-type(1) {
+.hero-home {
     display: flex;
     flex-direction: row; 
     gap: 2rem;
-    padding: 2rem 0;
     align-items: center;
     flex-wrap: wrap;
 
@@ -191,7 +190,7 @@ main section:nth-of-type(1) {
 }
 
 /* Container binnen section */
-main section:nth-of-type(1) > .container {
+.hero-home > .container {
     gap: 2rem;
     flex-wrap: wrap;
     width: 100%;          /* voor volledige breedte */
@@ -204,12 +203,12 @@ main section:nth-of-type(1) > .container {
 }
 
 /* Content div binnen container */
-main section:nth-of-type(1) > .container > div:nth-of-type(1) {
+.hero-home > .container > div:nth-of-type(1) {
     max-width: 50em;
 }
 
 /* H1 binnen die div */
-main section:nth-of-type(1) > .container > div:nth-of-type(1) h1 {
+.hero-home > .container > div:nth-of-type(1) h1 {
     color: var(--Color-deepPine);
     font-family: Hind;
     font-size: 3.3rem;
@@ -220,7 +219,7 @@ main section:nth-of-type(1) > .container > div:nth-of-type(1) h1 {
 }
 
 /* De img is nu ook kind van container */
-main section:nth-of-type(1) > .container > img {
+.hero-home > .container > img {
     max-width: 25em;
     border-radius: 1.8rem;
 }
@@ -244,7 +243,7 @@ main section:nth-of-type(1) > .container > img {
   width: 100%;
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 3rem 2rem;
+  padding: 4rem 2rem 5rem 2rem;
 }
 
 .projects > div {
@@ -366,12 +365,12 @@ main section:nth-of-type(1) > .container > img {
 /****************/
 /*     ABOUT    */
 /****************/
-.about {
+.about-section {
   width: 100%;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
 }
 
-.about .container2 {
+.about-section .container-about-section {
   max-width: 90em;          /* zelfde max breedte */
   margin: 0 auto;           /* centreren */
   display: flex;
@@ -381,26 +380,26 @@ main section:nth-of-type(1) > .container > img {
   align-items: center;
 }
 
-.about img {
+.about-section img {
   max-width: 25em;          /* zelfde max breedte als hero image */
   border-radius: 1.8rem;    /* zelfde border-radius */
   flex: 1 1 25em;           /* minimaal 25em breed */
   object-fit: cover;
 }
 
-.about article {
+.about-section article {
   flex: 1 1 50em;           /* max-width van tekstblok vergelijkbaar met hero */
   max-width: 50em;
 }
 
-.about article h2 {
+.about-section article h2 {
   font-size: 2.5rem;
   margin-bottom: 1.8rem;
   font-weight: 700;
   line-height: 1.2;
 }
 
-.about article a {
+.about-section article a {
   display: inline-block;
   margin-right: 1rem;
   margin-top: 2rem;
@@ -503,28 +502,27 @@ footer small {
 /****************/
 /*   PROJECTS   */
 /****************/
-body.projects{
+body.projects-page{
   background-color: var(--Color-ivoryDust);
 }
 
-body.projects .projects {
+body.projects-page .projects {
   background-color: var(--Color-ivoryDust);
   color: var(--color-dark);
+  padding: 3rem 2rem 5rem 2rem;
 }
 
 
 
 
-/****************/
-/*   ABOUT   */
-/****************/
-
-
+/*********************/
+/*   CONTACT PAGINA  */
+/*********************/
 .contactSection {
-  min-height: 70vh;
+  min-height: 82vh;
   display: flex;
   justify-content: space-between;     /* ruimte tussen blokken */
-  align-items: flex-start;            /* bovenzijde gelijk uitlijnen */
+  align-items: center;            /* bovenzijde gelijk uitlijnen */
   gap: 2rem;
   max-width: 64em;
   margin: 0 auto;
@@ -570,8 +568,8 @@ body.projects .projects {
 }
 
 .contactSection > .contactRight h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.8rem;
+  margin: 0 0 1.2rem 0;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--color-white);          /* expliciet wit */
 }
@@ -584,7 +582,7 @@ body.projects .projects {
 }
 
 .contactSection > .contactRight li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
   font-weight: 400;
 }
 
@@ -625,43 +623,43 @@ body.projects .projects {
 
   /* NAVIGATIE */
   header {
-    padding: 1rem; /* minder padding zijkanten */
+  padding: 1rem; /* minder padding zijkanten */
   }
 
-  header nav {
+  .main-nav {
     max-width: 100%;   /* volle breedte gebruiken op mobiel */
     margin: 0;         /* geen auto margin */
   }
 
-  header nav img {
+  .main-nav img {
     height: 1.8rem;
     width: auto;
   }
 
-  header nav ul {
+  .main-nav ul {
     gap: 1rem;         /* minder ruimte tussen links */
   }
-
  
-  /* HERO - EERSTE SECTIE */
-  main section:nth-of-type(1) {
-    flex-direction: column;
-    padding: 3rem 1rem;          /* alle kanten 1rem padding */
-    gap: 1.5rem;
-  }
 
-  main section:nth-of-type(1) > .container {
+
+  /* HERO - EERSTE SECTIE */
+  .hero-home {
+  flex-direction: column;
+  padding: 3rem 1rem;          /* alle kanten 1rem padding */
+  gap: 1.5rem;
+}
+
+  .hero-home > .container {
     flex-direction: column;
     max-width: 100%;        /* breedte voluit */
     margin: 0;
   }
 
-
-  main section:nth-of-type(1) > .container > div:nth-of-type(1) h1 {
+  .hero-home > .container > div:nth-of-type(1) h1 {
     font-size: 2.2rem;        /* kleiner lettertype voor mobiel */
   }
 
-  main section:nth-of-type(1) > .container > img {
+  .hero-home > .container > img {
     max-width: 100%;        /* afbeelding voluit in container */
   }
 
@@ -717,11 +715,11 @@ body.projects .projects {
 
 
   /* ABOUT - VIERDE SECTIE */
-   .about {
+   .about-section {
     padding: 3rem 1rem;       /* minder padding op smaller scherm */
   }
 
-  .about .container2 {
+  .about-section .container-about-section {
     flex-direction: column;
     max-width: 100%;
     margin: 0;
@@ -729,23 +727,23 @@ body.projects .projects {
     align-items: flex-start;  /* tekst netjes links */
   }
 
-  .about img {
+  .about-section img {
     max-width: 100%;
     flex: none;              /* flexen uitzetten zodat afbeelding breedte 100% */
     border-radius: 1rem;
   }
 
-  .about article {
+  .about-section article {
     flex: none;
     max-width: 100%;
     padding: 1rem 0;  
   }
 
-  .about article h2 {
+  .about-section article h2 {
     font-size: 1.8rem;       /* iets kleiner lettertype */
   }
 
-  .about article p {
+  .about-section article p {
     margin-bottom: 1em;
   }
   
@@ -800,18 +798,11 @@ body.projects .projects {
 
 
 
-
-
-
-
-
-
-
   /* CONTACT - PAGINA */
   .contactSection {
     flex-direction: column;      /* blokken onder elkaar */
     align-items: flex-start;     /* links uitlijnen */
-    padding: 0;          /* iets minder padding */
+    padding: 3rem 1rem;           /* iets minder padding */
     gap: 1.5rem;                 /* iets minder ruimte tussen blokken */
     min-height: auto;            /* geen vaste hoogte op mobiel */
   }
@@ -841,8 +832,12 @@ body.projects .projects {
   }
 
   .contactSection > .contactRight h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: .8rem;
+  }
+
+  .contactSection > .contactRight li {
+    margin-bottom: 0.1rem;
   }
 
   .contactSection > .contactRight ul li a {
