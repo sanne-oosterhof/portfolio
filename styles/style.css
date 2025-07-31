@@ -137,7 +137,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000; 
-    padding: .5rem 2rem;
+    padding: .5rem 4rem;
     border-bottom: 2px solid var(--Color-paleClay);
 }
 
@@ -179,49 +179,47 @@ header {
 /*     HERO     */
 /****************/
 .hero-home {
-    display: flex;
-    flex-direction: row; 
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap;
-
-    width: 100%;
-    padding: 3rem 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  padding: 4rem 4rem;
+  box-sizing: border-box;
 }
 
-/* Container binnen section */
 .hero-home > .container {
-    gap: 2rem;
-    flex-wrap: wrap;
-    width: 100%;          /* voor volledige breedte */
-
-    max-width: 90em;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  max-width: 90em;
+  margin: 0 auto;
+  gap: 2rem;
+  align-items: center;
+  /* flex-wrap niet aanzetten, zodat ze naast elkaar blijven */
 }
 
-/* Content div binnen container */
 .hero-home > .container > div:nth-of-type(1) {
-    max-width: 50em;
+  flex: 0 1 60%;      /* tekst neemt 60% van de container breedte */
+  max-width: 50em;    /* maar max 50em */
+  min-width: 20em;    /* minimaal 20em breed */
 }
 
-/* H1 binnen die div */
 .hero-home > .container > div:nth-of-type(1) h1 {
-    color: var(--Color-deepPine);
-    font-family: Hind;
-    font-size: 3.3rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 116%; 
-    margin-bottom: .5em;
+  color: var(--Color-deepPine);
+  font-family: Hind;
+  font-size: 3.3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 116%; 
+  margin-bottom: .5em;
 }
 
-/* De img is nu ook kind van container */
 .hero-home > .container > img {
-    max-width: 25em;
-    border-radius: 1.8rem;
+  flex: 0 0 38%;         /* neemt 38% van de containerbreedte */
+  max-width: 38%;
+  width: 100%;           /* vult zijn eigen kolom */
+  height: auto;
+  object-fit: contain;
 }
 
 /* Tekst onderstrepen in de H1 */
@@ -243,7 +241,7 @@ header {
   width: 100%;
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 4rem 2rem 5rem 2rem;
+  padding: 4rem 4rem 5rem 4rem;
 }
 
 .projects > div {
@@ -367,31 +365,37 @@ header {
 /****************/
 .about-section {
   width: 100%;
-  padding: 4rem 2rem;
+  padding: 4rem 4rem;
+  box-sizing: border-box;
 }
 
-.about-section .container-about-section {
-  max-width: 90em;          /* zelfde max breedte */
-  margin: 0 auto;           /* centreren */
+.container-about-section {
+  max-width: 75em;         /* nieuwe max breedte */
+  margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
+  flex-direction: row;
+  gap: 6rem;
   align-items: center;
+  flex-wrap: nowrap;       /* niet onder elkaar, tenzij in media query */
 }
 
+/* Afbeelding: 38% breed, schaalt mee */
 .about-section img {
-  max-width: 25em;          /* zelfde max breedte als hero image */
-  border-radius: 1.8rem;    /* zelfde border-radius */
-  flex: 1 1 25em;           /* minimaal 25em breed */
+  flex: 0 0 32%;           /* Verkleind van 38% → 32% */
+  max-width: 32%;
+  width: 100%;
+  height: auto;
+  border-radius: 1.8rem;
   object-fit: cover;
 }
 
+/* Artikel: neemt resterende ruimte in */
 .about-section article {
-  flex: 1 1 50em;           /* max-width van tekstblok vergelijkbaar met hero */
-  max-width: 50em;
+  flex: 1 1 62%;           /* rest van de ruimte (100% - 38%) */
+  max-width: 100%;         /* geen harde beperking */
 }
 
+/* Tekststijl */
 .about-section article h2 {
   font-size: 2.5rem;
   margin-bottom: 1.8rem;
@@ -406,13 +410,12 @@ header {
 }
 
 
-
 /****************/
 /*    FOOTER    */
 /****************/
 footer {
   background-color: var(--color-dark);
-  padding: 3rem 2rem 1rem; /* wat meer onderruimte voor small */
+  padding: 3rem 4rem 1rem; /* wat meer onderruimte voor small */
   color: var(--color-white);
   font-family: 'Hind', sans-serif;
 }
@@ -509,7 +512,7 @@ body.projects-page{
 body.projects-page .projects {
   background-color: var(--Color-ivoryDust);
   color: var(--color-dark);
-  padding: 3rem 2rem 5rem 2rem;
+  padding: 3rem 4rem 5rem 4rem;
 }
 
 
