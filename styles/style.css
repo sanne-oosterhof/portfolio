@@ -23,6 +23,8 @@ button, summary {
 	--Color-paleClay:#EEE5DF;
 	--Color-ivoryDust:#F4F1EA;
 	--color-white:#FFFFFF;
+
+  
 }
 
 
@@ -164,13 +166,33 @@ header {
   margin: 0;
 }
 
-/* Optioneel: styling van de links */
-.main-nav a {
-  text-decoration: none;
+.main-nav ul li a{
   font-weight: bold;
   color: var(--color-dark);
+
+  position: relative;
+  text-decoration: none;
 }
 
+/* HOVER effect met het lijntje eronder */
+.main-nav ul li a::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 40px;
+  background-color: var(--color-dark);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .25s ease-in-out;
+}
+
+.main-nav ul li a:hover::before{
+  transform-origin: left;
+  transform: scaleX(1);
+}
 
 
 
@@ -227,6 +249,14 @@ header {
     background-image: linear-gradient(var(--color-neonMint), var(--color-neonMint));
     background-repeat: no-repeat;
     background-size: 100% 8px; /* breedte x dikte van de underline */
+    background-position: 0 70%; /* horizontaal 0, verticaal positie */
+}
+
+/* Tekst onderstrepen in de H2 */
+h2 .onderstreept-detail {
+    background-image: linear-gradient(var(--color-neonMint), var(--color-neonMint));
+    background-repeat: no-repeat;
+    background-size: 100% 5px; /* breedte x dikte van de underline */
     background-position: 0 70%; /* horizontaal 0, verticaal positie */
 }
 
@@ -462,14 +492,41 @@ footer li {
   font-weight: 400;
 }
 
+/* HOVER EFFECT OP DE LINKJES */
 footer ul li a {
   color: var(--color-white);
   font-weight: normal;
   text-decoration: none;
-
   display: inline-flex;       /* zodat icoon en tekst naast elkaar staan */
   align-items: center;
   gap: 0.5em;                 /* ruimte tussen icoon en tekst */
+  position: relative;
+  text-decoration: none;
+}
+
+footer ul li a span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px; /* onderlijn-ruimte bij tekst */
+}
+
+footer ul li a span::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 40px;
+  background-color: var(--color-white);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+footer ul li a:hover span::before {
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 /* Styling voor het icoon in de link */
@@ -480,10 +537,9 @@ footer ul li a .icon {
   margin-right: 0.5em;        /* marge rechts van het icoon */
 }
 
-/* Hover effect op links */
+/* Hover effect op links uitzetten */
 footer ul li a:hover {
-  /* color: var(--color-neonMint); */
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Voor copyright onderaan de pagina */
@@ -496,6 +552,9 @@ footer small {
   font-weight: 300;
   color: var(--color-white);
 }
+
+
+
 
 
 /*********************/
@@ -522,10 +581,10 @@ body.projects-page .projects {
 /*   CONTACT PAGINA  */
 /*********************/
 .contactSection {
-  min-height: 82vh;
+  min-height: 84vh;
   display: flex;
-  justify-content: space-between;     /* ruimte tussen blokken */
-  align-items: center;            /* bovenzijde gelijk uitlijnen */
+  justify-content: space-between;
+  align-items: center;
   gap: 2rem;
   max-width: 64em;
   margin: 0 auto;
@@ -533,10 +592,9 @@ body.projects-page .projects {
   background-color: var(--Color-ivoryDust);
   font-family: 'Hind', sans-serif;
   color: var(--color-dark);
-  flex-wrap: nowrap;                  /* naast elkaar */
+  flex-wrap: nowrap;
 }
 
-/* Het linkerblok */
 .contactSection > .contactLeft {
   flex: 1 1 50%;
   min-width: 31em;
@@ -550,7 +608,7 @@ body.projects-page .projects {
 .contactSection > .contactLeft h2 {
   font-size: 2.5rem;
   margin: 0 0 0.5rem 0;
-  color: var(--color-dark);           /* behoudt oorspronkelijke kleur */
+  color: var(--color-dark);
 }
 
 .contactSection > .contactLeft p {
@@ -574,7 +632,7 @@ body.projects-page .projects {
   margin: 0 0 1.2rem 0;
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--color-white);          /* expliciet wit */
+  color: var(--color-white);
 }
 
 .contactSection > .contactRight ul {
@@ -596,19 +654,41 @@ body.projects-page .projects {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
+  position: relative;
 }
 
+.contactSection > .contactRight ul li a span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.contactSection > .contactRight ul li a span::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;             /* oude dikte terug */
+  border-radius: 40px;
+  background-color: var(--color-white);
+  bottom: 2px;
+  left: 0;
+  transform-origin: right;  /* terug naar origine bij niet-hover */
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.contactSection > .contactRight ul li a:hover span::before {
+  transform-origin: left;   /* origine aan linkerzijde bij hover */
+  transform: scaleX(1);
+}
+
+/* Styling icoon blijft gelijk */
 .contactSection > .contactRight ul li a .icon {
   width: 1.1em;
   height: 1.1em;
   flex-shrink: 0;
   margin-right: 0.5em;
 }
-
-.contactSection > .contactRight ul li a:hover {
-  text-decoration: underline;
-}
-
 
 
 
@@ -799,6 +879,10 @@ body.projects-page .projects {
 
 
 
+  /* PROJECTS - PAGINA */
+  body.projects-page .projects {
+    padding: 3rem 1rem;
+  }
 
 
   /* CONTACT - PAGINA */
