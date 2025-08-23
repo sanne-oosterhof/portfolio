@@ -696,17 +696,13 @@ body.projectsdetail-page .screenshots-wrapper img {
 
 
 
-/* Video of iframe styling */
-body.projectsdetail-page .screenshots-wrapper video,
 body.projectsdetail-page .screenshots-wrapper iframe {
-  max-width: 100%;               /* nooit breder dan container */
-  width: 100%;                   /* vult de container */
-  height: auto;                  /* behoudt aspect ratio */
-  display: block;                /* voorkomt extra whitespace */
-  border-radius: 1rem;           /* optioneel, net zoals je andere afbeeldingen */
+  width: 100%;
+  aspect-ratio: 16 / 9;    /* zorgt voor juiste verhouding */
+  height: auto;            /* browser rekent hoogte zelf uit */
+  display: block;
+  border-radius: 1rem;
 }
-
-
 
 
 /*********************/
